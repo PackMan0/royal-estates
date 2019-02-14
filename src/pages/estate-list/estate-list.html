@@ -1,0 +1,31 @@
+<ion-header>
+
+    <ion-navbar>
+    <ion-title>Estates</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="estate-list">
+
+    <ion-list>
+
+        <ion-item-sliding *ngFor="let estate of estates">
+            <button ion-item (click)="openEstateDetail(estate.id)">
+                <ion-thumbnail item-left>
+                    <img src="{{estate.image}}"/>
+                </ion-thumbnail>
+                <h2>{{estate.type}}</h2>
+                <p>{{estate.region}} ∙ {{ estate.price }}</p>
+            </button>
+        </ion-item-sliding>
+
+    </ion-list>
+
+</ion-content>
+
+<ion-footer padding>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+</ion-footer>
+

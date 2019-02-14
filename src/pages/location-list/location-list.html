@@ -1,0 +1,27 @@
+<ion-header>
+
+    <ion-navbar>
+        
+    <ion-title>Locations</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="location-list">
+
+    <ion-list>
+
+        <ion-item-sliding *ngFor="let loc of locations">
+            <button ion-item (click)="listEstates(loc.id)">
+                <h2>{{loc.name}}</h2>
+            </button>
+        </ion-item-sliding>
+
+    </ion-list>
+
+</ion-content>
+
+<ion-footer padding>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+</ion-footer>

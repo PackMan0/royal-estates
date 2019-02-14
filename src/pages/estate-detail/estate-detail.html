@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Estate</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="viewMode==='card'">
+        <img src="{{estate.image}}"/>
+        <ion-card-content>
+            <h2 class="card-title">{{estate.type}}</h2>
+            <p>{{estate.address}}</p>
+        </ion-card-content>
+        <ion-list>
+
+            <ion-item>
+                <ion-icon item-left name="moon"></ion-icon>
+                <h3>Bedrooms</h3>
+                <ion-note item-right>{{estate.bedrooms}}</ion-note>
+            </ion-item>
+            <ion-item>
+                <ion-icon item-left name="pricetag"></ion-icon>
+                <h3>Asking Price</h3>
+                <ion-note item-right>{{estate.price}}</ion-note>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+    <agm-map *ngIf="viewMode==='map'" [latitude]="lat" [longitude]="lng" [zoom]="15"
+  [disableDefaultUI]="false"
+  [zoomControl]="false">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+</ion-content>
+
+<ion-footer padding>
+    <ion-segment [(ngModel)]="viewMode">
+        <ion-segment-button value="card" (ionSelect)="showDetails(estate)"> 
+            <ion-icon name="information-circle-outline"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="map" (ionSelect)="showMap(estate)">
+            <ion-icon name="map"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+</ion-footer>
